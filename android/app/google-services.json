@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1068397799547",
+    "firebase_url": "https://romoogoola.firebaseio.com",
+    "project_id": "romoogoola",
+    "storage_bucket": "romoogoola.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068397799547:android:c9d996d2d03a5626795ade",
+        "android_client_info": {
+          "package_name": "com.blipclap.romoogoola"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068397799547-s2r730f0eb80k1aujels45v4b2if2dgc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfmN2gc6jCItFxcHFXtuHWYRlaEe8DEOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068397799547-s2r730f0eb80k1aujels45v4b2if2dgc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
