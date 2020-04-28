@@ -18,8 +18,9 @@ class _DisplayChapterListState extends State<DisplayChapterList> {
   @override
   void initState() {
     super.initState();
+    // if(widget.snapshot.data[widget.index].da)
     _data =
-        getChapter(widget.snapshot.data[widget.index].data['name'].toString());
+        getChapter(widget.snapshot.data[widget.index].data['id'].toString());
   }
 
   @override
@@ -75,39 +76,17 @@ class _DisplayChapterListState extends State<DisplayChapterList> {
   Widget _buildItems(int index, BuildContext context, AsyncSnapshot snapshot) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
         color: Colors.white,
-        boxShadow: [
-          new BoxShadow(
-            color: Colors.black12,
-            offset: const Offset(0.0, 5.0),
-            blurRadius: 25.0,
-            spreadRadius: 5.0,
-          ),
-        ],
       ),
       child: GestureDetector(
         onTap: () => _onTapItem(context, index, snapshot),
         child: Column(
           children: <Widget>[
-            SizedBox(
-              height: 5.0,
-            ),
             Text(
               snapshot.data[index].data['chapterName'],
               softWrap: true,
               style: TextStyle(color: Colors.black),
             ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Text(
-              snapshot.data[index].data['chapterName'],
-              style: TextStyle(
-                  fontSize: 10.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red),
-            )
           ],
         ),
       ),
@@ -118,9 +97,9 @@ class _DisplayChapterListState extends State<DisplayChapterList> {
     Navigator.of(pcontext)
         .push(MaterialPageRoute<void>(builder: (BuildContext context) {
       return Scaffold(
-
-          //body:DisplayChapter(index: index,snapshot: snapshot)
-          );
+        body: Text(snapshot.data[index].data['chapterName']),
+        //body:DisplayChapter(index: index,snapshot: snapshot)
+      );
     }));
   }
 }
