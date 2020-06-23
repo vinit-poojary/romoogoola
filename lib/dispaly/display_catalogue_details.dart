@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
-import 'package:romoogoola/dispaly/display_chapter.dart';
+import 'package:romoogoola/dispaly/display_chapter_list.dart';
 import 'package:romoogoola/widget/network_image.dart';
 
 class DisplayCatalogue extends StatefulWidget {

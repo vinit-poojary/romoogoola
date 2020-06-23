@@ -127,8 +127,8 @@ class _DisplayCatalogueListState extends State<DisplayCatalogueList> {
     );
   }
 
-  _onTapItem(BuildContext pcontext, int index, AsyncSnapshot snapshot) {
-    Navigator.of(pcontext)
+  _onTapItem(BuildContext pContext, int index, AsyncSnapshot snapshot) {
+    Navigator.of(pContext)
         .push(MaterialPageRoute<void>(builder: (BuildContext context) {
       return Scaffold(body: DisplayCatalogue(index: index, snapshot: snapshot));
     }));

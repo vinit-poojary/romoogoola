@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:romoogoola/database/data.dart';
+import 'package:romoogoola/dispaly/display_chapter_list_type_1.dart';
 
 class DisplayChapterList extends StatefulWidget {
   final AsyncSnapshot snapshot;
@@ -14,13 +15,13 @@ class DisplayChapterList extends StatefulWidget {
 
 class _DisplayChapterListState extends State<DisplayChapterList> {
   Future _data;
+  List<String> page;
 
   @override
   void initState() {
     super.initState();
     // if(widget.snapshot.data[widget.index].da)
-    _data =
-        getChapter(widget.snapshot.data[widget.index].data['id'].toString());
+    _data = getChapterList(widget.snapshot.data[widget.index].data['id']);
   }
 
   @override
@@ -50,16 +51,6 @@ class _DisplayChapterListState extends State<DisplayChapterList> {
           return Scaffold(
             body: CustomScrollView(
               slivers: <Widget>[
-                SliverAppBar(
-                  expandedHeight: 150.0,
-                  pinned: false,
-                  floating: true,
-                  snap: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: Text(''),
-                    // background:  PNetworkImage(assets.images[1], fit: BoxFit.cover),
-                  ),
-                ),
                 SliverPadding(
                   padding: EdgeInsets.only(
                       left: 8.0, right: 8.0, top: 10.0, bottom: 10.0),
@@ -79,13 +70,15 @@ class _DisplayChapterListState extends State<DisplayChapterList> {
         color: Colors.white,
       ),
       child: GestureDetector(
-        onTap: () => _onTapItem(context, index, snapshot),
+        onTap: () => _onTapItem(context,index,snapshot),
         child: Column(
           children: <Widget>[
-            Text(
-              snapshot.data[index].data['chapterName'],
-              softWrap: true,
-              style: TextStyle(color: Colors.black),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                snapshot.data[index].data['chapterName'].toString(),
+                style: TextStyle(color: Colors.black),
+              ),
             ),
           ],
         ),
@@ -93,13 +86,21 @@ class _DisplayChapterListState extends State<DisplayChapterList> {
     );
   }
 
-  _onTapItem(BuildContext pcontext, int index, AsyncSnapshot snapshot) {
-    Navigator.of(pcontext)
+  _onTapItem(BuildContext pContext, int index, AsyncSnapshot snapshot) {
+    Navigator.of(pContext)
         .push(MaterialPageRoute<void>(builder: (BuildContext context) {
       return Scaffold(
-        body: Text(snapshot.data[index].data['chapterName']),
-        //body:DisplayChapter(index: index,snapshot: snapshot)
+        body: DisplayChapterListType1(page: getImageList(index,snapshot)),
       );
     }));
+  }
+
+ List getImageList(int index, AsyncSnapshot snapshot) {
+    for (int i = 0;;i++) {
+      if (page[i]==null)
+        break;
+      page[i] = snapshot.data[index].data['page' + i.toString()];
+    }
+    return page;
   }
 }

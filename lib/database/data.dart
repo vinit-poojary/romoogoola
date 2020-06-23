@@ -29,12 +29,20 @@ Future getCatalogue() async {
   return catalogueDetails.documents;
 }
 
-Future getChapter(String refId) async {
+Future getChapterList(String refId) async {
   QuerySnapshot chapterDetails = await _firestore
       .collection(ref)
       .document(refId)
       .collection(chapter)
       .getDocuments();
-  print(chapterDetails.documents);
+  return chapterDetails.documents;
+}
+
+Future getChapterListType1(String refId) async {
+  QuerySnapshot chapterDetails = await _firestore
+      .collection(ref)
+      .document(refId)
+      .collection(chapter)
+      .getDocuments();
   return chapterDetails.documents;
 }
